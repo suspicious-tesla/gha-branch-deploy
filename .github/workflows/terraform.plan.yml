@@ -22,7 +22,7 @@ jobs:
       - name: Terraform Plan
         env:
           GITHUB_APP_ID: ${{ secrets.TERRAFORM_GITHUB_APP_ID }}
-          GITHUB_APP_INSTALLATION_ID: ${{ vars.TERRAFORM_GITHUB_INSTALL_TOKEN }}
+          GITHUB_APP_INSTALLATION_ID: ${{ vars.TERRAFORM_GITHUB_INSTALL_ID }}
           GITHUB_APP_PEM_FILE: ${{ secrets.TERRAFORM_GITHUB_APP_TOKEN }}
         run: terraform -chdir=terraform plan
       # - name: Terraform Apply
