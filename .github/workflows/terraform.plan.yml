@@ -5,12 +5,12 @@ jobs:
   terraform-plan:
     runs-on: ubuntu-latest
     steps:
-      - name: Get token
-        id: get_token
-        uses: tibdex/github-app-token@v1
-        with:
-          private_key: ${{ secrets.TERRAFORM_GITHUB_APP_TOKEN }}
-          app_id: ${{ secrets.TERRAFORM_GITHUB_APP_ID }}
+      # - name: Get token
+      #   id: get_token
+      #   uses: tibdex/github-app-token@v1
+      #   with:
+      #     private_key: ${{ secrets.TERRAFORM_GITHUB_APP_TOKEN }}
+      #     app_id: ${{ secrets.TERRAFORM_GITHUB_APP_ID }}
       - name: Checkout
         uses: actions/checkout@v3.3.0
       - name: Setup Terraform
@@ -21,7 +21,9 @@ jobs:
         run: terraform -chdir=terraform init
       - name: Terraform Plan
         env:
-          GITHUB_TOKEN: ${{ steps.get_token.outputs.token }}
+          GITHUB_APP_ID: ${{ secrets.TERRAFORM_GITHUB_APP_ID }}
+          GITHUB_APP_INSTALLATION_ID: ${{ vars.TERRAFORM_GITHUB_INSTALL_TOKEN }}
+          GITHUB_APP_PEM_FILE: ${{ secrets.TERRAFORM_GITHUB_APP_TOKEN }}
         run: terraform -chdir=terraform plan
       # - name: Terraform Apply
       #   env:
