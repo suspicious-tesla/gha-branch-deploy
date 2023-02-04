@@ -23,7 +23,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.get_token.outputs.token }}
         run: terraform -chdir=terraform plan
-      - name: Terraform Apply
-        env:
-          GITHUB_TOKEN: ${{ steps.get_token.outputs.token }}
-        run: terraform -chdir=terraform apply -auto-approve
+      # - name: Terraform Apply
+      #   env:
+      #     GITHUB_TOKEN: ${{ steps.get_token.outputs.token }}
+      #   run: terraform -chdir=terraform apply -auto-approve

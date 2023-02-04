@@ -13,6 +13,10 @@ data "github_repository" "branch_deploy" {
   full_name = "suspicious-tesla/gha-branch-deploy"
 }
 
+data "github_app" "suspicious_tesla_github_terraform" {
+  slug = "suspicious-tesla-github-terraform"
+}
+
 output "repository_branch_deploy" {
   value = data.github_repository.branch_deploy
 }
